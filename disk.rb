@@ -7,8 +7,7 @@ end
 
 def diskSize (current_disk)
 	disk_stats = Filesystem.stat(current_disk)
-	return b = disk_stats.bytes_free / 1024 / 1024 / 1024
-	puts b
+	return disk_stats.bytes_free / 1024 / 1024 / 1024
 end
 
 def listDisks ()
@@ -18,4 +17,6 @@ end
 
 #puts listDisks
 c = listDisks.lines
-diskSize (c.gsub(/\n/, ""))
+mounts = Hash.new
+
+c.each { |thing| mounts[thing] = diskSize(thing.gsub(/\n/, "")) }
