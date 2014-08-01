@@ -15,7 +15,6 @@ def listDisks ()
 	diskList = `df | grep -vE '^Filesystem|tmpfs|cdrom|rootfs|udev|boot' | awk '{print $6}'`
 end
 
-#puts listDisks
 c = listDisks.lines
 mounts = Hash.new
 
